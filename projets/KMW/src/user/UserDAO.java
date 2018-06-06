@@ -27,7 +27,7 @@ public class UserDAO {
 		String SQL = "SELECT userPassword FROM USER WHERE userID = ?";
 		try {
 			pstmt = conn.prepareStatement(SQL);
-			pstmt.setString(1,  userID);
+			pstmt.setString(1, userID);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				if(rs.getString(1).equals(userPassword)) 
@@ -41,4 +41,5 @@ public class UserDAO {
 		}
 		return -2; //데이터베이스 오류
 	}
+	
 }
