@@ -16,7 +16,8 @@ public class UserDAO {
 			String dbURL = "jdbc:mysql//localhost:3306/KMW";
 			String dbID = "root";
 			String dbPassword = "root";
-			Class.forName("com.mysql.jdbc.Driver");
+			//Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("org.gjt.mm.mysql.Driver");
 			conn = DriverManager.getConnection(dbURL, dbID, dbPassword);
 		} catch (Exception e) {    //예외 처리가능하게
 			e.printStackTrace(); // 어떤 오류인지 출력

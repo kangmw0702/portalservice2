@@ -1,0 +1,21 @@
+div.wrapper{  
+    float:left; 
+    position:relative;  
+}  
+div.description{  
+    position:absolute; 
+    bottombottom:0px; 
+    z-index: 1;
+    left:0px;  
+    width:100%;  
+    background-color:black;  
+    font-family: 'tahoma';  
+    font-size:15px;  
+    color:white;  
+    opacity:0.6; 
+    filter:alpha(opacity=60);
+}  
+p.description_content{  
+    padding:10px;  
+    margin:0px;  
+}  

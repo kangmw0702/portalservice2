@@ -10,6 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width", initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/custom.css">
 <title>뉴스 웹사이트</title>
 </head>
 <style type="text/css">
@@ -89,6 +90,12 @@
 					</tr>
 				</thead>
 				<tbody>
+						<tr>
+						<td>1</td>
+						<td>안녕</td>
+						<td>홍길동</td>
+						<td>2018-06-13</td>
+						</tr>
 				<%
 					NewsDAO newsDAO = new NewsDAO();
 					ArrayList<News> list = newsDAO.getList(pageNumber);

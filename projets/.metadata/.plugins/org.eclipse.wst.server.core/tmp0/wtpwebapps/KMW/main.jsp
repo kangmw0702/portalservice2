@@ -7,6 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="viewport" content="width=device-width", initial-scale="1">
 <link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="css/text.css">
 <title>뉴스 웹사이트</title>
 </head>
 <body>
@@ -30,7 +32,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="main.jsp">메인</a></li>
-				<li><a href="news.jsp">뉴스</a></li>
+				<li><a href="board.jsp">게시판</a></li>
 			</ul>
 			<%
 				if(userID == null) {
@@ -64,6 +66,60 @@
 			%>
 		</div>
 	</nav>
+			 <table align="center">
+			 <tr>
+			 <td>
+			 <div class='wrapper'>
+			 <a href="news1.jsp" style="text-decoration:none; color: white">
+			 <img src="images/기사1.jpg" Height=300 Width=500 style="border: 3px solid white; border-radius: 20px; 
+			 -moz-border-radius: 20px; -khtml-border-radius: 20px; -webkit-border-radius: 20px;" />
+			 <div class='description'>
+			 <p class='description_content'>북미회담 NEWS</p></a>
+			 </div>
+			 </div>
+			 </td>
+			 
+			 <td>
+			 <div class='wrapper'>
+			 <a href="news2.jsp" style="text-decoration:none; color: white">
+			 <img src="images/기사2.jpg" Height=300 Width=500 style="border: 3px solid white; border-radius: 20px; 
+			 -moz-border-radius: 20px; -khtml-border-radius: 20px; -webkit-border-radius: 20px;">
+			 <div class='description'>
+			 <p class='description_content'>지방선거 NEWS</p></a>
+			 </div>
+			 </div>
+			 </td>
+			 </tr>
+			 
+			 <tr>
+			 <td>
+			 </br></br>
+			 <div class='wrapper'>
+			 <a href="news3.jsp" style="text-decoration:none; color: white">
+			 <img src="images/기사3.jpg" Height=300 Width=500 style="border: 3px solid white; border-radius: 20px; 
+			 -moz-border-radius: 20px; -khtml-border-radius: 20px; -webkit-border-radius: 20px;">
+			 <div class='description'>
+			 <p class='description_content'>연예인 NEWS</p></a>
+			 </div>
+			 </div>
+			 </td>
+			 
+			 <td>
+			 </br></br>
+			 <div class='wrapper'>
+			 <a href="news4.jsp" style="text-decoration:none; color: white">
+			 <img src="images/기사4.jpg" Height=300 Width=500 style="border: 3px solid white; border-radius: 20px; 
+			 -moz-border-radius: 20px; -khtml-border-radius: 20px; -webkit-border-radius: 20px;">
+			 <div class='description'>
+			 <p class='description_content'>TV 프로 NEWS</p></a>
+			 </div>
+			 </div>
+			 <td>
+			 </td>
+			 </tr>
+			 </table>		 
+		</div>
+		</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>
 </body>
