@@ -1,6 +1,6 @@
-package NEWS;
+package news;
 
-public class NEWS {
+public class News {
 	
 	private int newsID;
 	private String newsTitle;

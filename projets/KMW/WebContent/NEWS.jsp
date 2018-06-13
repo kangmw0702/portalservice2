@@ -30,7 +30,7 @@
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li><a href="main.jsp">메인</a></li>
-				<li class="active"><a href="NEWS.jsp">뉴스</a></li>
+				<li class="active"><a href="news.jsp">뉴스</a></li>
 			</ul>
 			<%
 				if(userID == null) {
@@ -69,10 +69,10 @@
 			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
 				<thead>
 					<tr>
-						<th style="background-color: #eeeeee; text-align: center;">번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">제목</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성자</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성일</th>
+						<th style="background-color" #eeeeee; text-align: center;">번호</th>
+						<th style="background-color" #eeeeee; text-align: center;">제목</th>
+						<th style="background-color" #eeeeee; text-align: center;">작성자</th>
+						<th style="background-color" #eeeeee; text-align: center;">작성일</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -80,11 +80,10 @@
 						<td>1</td>
 						<td>안녕</td>
 						<td>홍길동</td>
-						<td>2018-06-13</td>
+						<td>2018-09-13</td>
 					</tr>
 				</tbody>
 			</table>
-			<!--글쓰기 이동-->
 			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
 		</div>
 	</div>
