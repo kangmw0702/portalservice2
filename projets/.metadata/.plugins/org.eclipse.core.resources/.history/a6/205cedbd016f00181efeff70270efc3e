@@ -1,0 +1,74 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="news.NewsDAO" %>
+<%@ page import="news.News" %>
+<%@ page import="java.io.PrintWriter" %>
+<% request.setCharacterEncoding("UTF-8"); %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>뉴스 웹사이트</title>
+</head>
+<body>
+	<%
+	String userID = null;
+	if(session.getAttribute("userID") != null) {
+		userID = (String) session.getAttribute("userID");
+	}
+	if (userID != null) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('로그인이 필요합니다.')");
+		script.println("location.href = 'login.jsp'");
+		script.println("</script>");			
+	}
+	int newsID = 0;
+	if (request.getParameter("newsID") !=null) {
+		newsID = Integer.parseInt(request.getParameter("neswID"));
+	}
+	if  (newsID == 0) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('유효하지 않는 글입니다.')");
+		script.println("location.href = 'news.jsp'");
+		script.println("</script>");
+	}
+	
+	News news = new NewsDAO().getNews(newsID);
+	if (!userID.equals(news.getUserID())) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('권한이 없습니다.')");
+		script.println("location.href = 'news.jsp'");
+		script.println("</script>");
+	} else {
+		if (request.getParameter("newsTitle") == null || news.getNewsContent() == null) {
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('입력이 완료되지 않았습니다.')");
+			script.println("history.back()");
+			script.println("</script>");
+		} else {
+			NewsDAO newsDAO = new NewsDAO();
+			int result = newsDAO.write(news.getNewsTitle(), userID, news.getNewsContent());
+			if (result == -1) {
+				PrintWriter script = response.getWriter();
+				script.println("<script>");
+				script.println("alert('글쓰기에 실패했습니다.')");
+				script.println("history.back()");
+				script.println("</script>");
+			}
+			else {
+				PrintWriter script = response.getWriter();
+				script.println("<script>");
+				script.println("location.href = 'news.jsp'");
+				script.println("</script>");
+			}
+		}
+		
+	}
+
+	%>
+</body>
+</html>

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 public class NewsDAO {
 
@@ -68,4 +69,89 @@ public class NewsDAO {
 		return -1; //데이터베이스 오류	
 	}
 	
+	public ArrayList<News> getList(int pageNumber) {
+		String SQL = "SELECT * FROM NEWS WHERE newsID < ? AND newsAvailable = 1 ORDER BY newsID DESC LIMIT 10";
+		ArrayList<News> list = new ArrayList<News>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				News news = new News();
+				news.setNewsID(rs.getInt(1));
+				news.setNewsTitle(rs.getString(2));
+				news.setUserID(rs.getString(3));
+				news.setNewsDate(rs.getString(4));
+				news.setNewsContent(rs.getString(5));
+				news.setNewsAvailable(rs.getInt(6));
+				list.add(news);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+	
+	public boolean nextPage(int pageNumber) {
+		String SQL = "SELECT * FROM NEWS WHERE newsID < ? AND newsAvailable = 1";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, getNext() - (pageNumber - 1) * 10);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public News getNews(int newsID) {
+		String SQL = "SELECT * FROM NEWS WHERE newsID = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, newsID);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				News news = new News();
+				news.setNewsID(rs.getInt(1));
+				news.setNewsTitle(rs.getString(2));
+				news.setUserID(rs.getString(3));
+				news.setNewsDate(rs.getString(4));
+				news.setNewsContent(rs.getString(5));
+				news.setNewsAvailable(rs.getInt(6));
+				return news;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public int update(int newsID, String newsTitle, String newsContent) {
+		String SQL = "UPDATE KMW SET newsTitle = ?, newsContent = ? WHERE newsID = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setString(1, newsTitle);
+			pstmt.setString(2, newsContent);
+			pstmt.setInt(3, newsID);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1; //데이터베이스 오류	
+	}
+	
+	public int delete(int newsID) {
+		String SQL = "UPDATE KMW SET newsAvailable = 0 WHERE newsID = ?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(SQL);
+			pstmt.setInt(1, newsID);
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return -1; //데이터베이스 오류	
+	}
 }
